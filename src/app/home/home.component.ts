@@ -13,7 +13,11 @@ import { HousingLocation } from '../housinglocation';
       </form>    
     </section>
     <section class="results">
-      <app-housing-location></app-housing-location>
+      <!-- 
+        La sintaxis de => [attribute] = "value" permite notificar a Angular que el valor asignado, debe ser tratado como 
+        una propiedad de la clase del Componente y no como un valor String
+    -->
+      <app-housing-location [housingLocation]="housingLocation"></app-housing-location>
     </section>
   `,
   styleUrls: [`./home.component.css`]
