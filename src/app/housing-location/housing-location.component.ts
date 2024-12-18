@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { HousingLocation } from '../housinglocation';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-housing-location',
-  imports: [],
+  imports: [RouterModule],
   template: `
     <section class="listing">      
       <img        
@@ -14,6 +15,12 @@ import { HousingLocation } from '../housinglocation';
       />      
       <h2 class="listing-heading">{{ housingLocation.name }}</h2>      
       <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>    
+
+      <!-- 
+        'routerLink: Esta directiva permite al ruteador de angular crear enlaces dinamicos en la aplicación' 
+        routerLink cuenta con dos entradas, la ruta y el dato dinamico.
+      -->
+      <a [routerLink]="['/details', housingLocation.id]">Learn More</a>
     </section>
     <!--
       'src' guarda la propiedad para construir 'housingLocation.photo'.
