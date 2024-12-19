@@ -68,11 +68,13 @@ export class DetailsComponent {
   //          'firstName' es un string y su valor por default es 'empty string'
 
   constructor(){
-    // Dentro del constructor se transforma el Id obtenido de la ruta, de un string a un number
-    const housingLocationId = Number(this.route.snapshot.params['id']);
+    //Actualizamos el tipo de consulta para details/id ahora que se usa un json server
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
 
-    //Incluimos un llamado a 'HousingService' para pasar el parametro de ruta como un argumento para la función del servicio 'getHousingLocationById'
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+      this.housingLocation = housingLocation;
+    });
+
   }
 
   submitApplication() {    

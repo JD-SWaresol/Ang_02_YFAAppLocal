@@ -45,8 +45,10 @@ export class HomeComponent {
 
 
   constructor(){
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocationList;
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    });
   }
 
   //Metodo para realizar el filtrado de texto para la consulta, recibe el valor del campo de texto de la consulta.
